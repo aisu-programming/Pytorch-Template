@@ -1,16 +1,16 @@
 """ Libraries """
 import torch
-import torch.nn as nn
+
 
 
 """ Models """
-class MyModule(nn.Module):
+class MyModule(torch.nn.Module):
     def __init__(self) -> None:
         super().__init__()
-        self.conv_2d       = nn.Conv2d()
-        self.linear        = nn.Linear()
-        self.batch_norm_2d = nn.BatchNorm2d()
-        self.silu          = nn.SiLU()
+        self.conv_2d       = torch.nn.Conv2d()
+        self.linear        = torch.nn.Linear()
+        self.batch_norm_2d = torch.nn.BatchNorm2d()
+        self.silu          = torch.nn.SiLU()
 
     def forward(self, input):
         x = input
@@ -21,7 +21,7 @@ class MyModule(nn.Module):
         return x
 
 
-class MyModel(nn.Module):
+class MyModel(torch.nn.Module):
     def __init__(self) -> None:
         super().__init__()
         self.my_module = MyModule()

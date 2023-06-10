@@ -9,15 +9,16 @@ from torch.utils.data import Dataset, IterableDataset, Subset
 
 """ Classes """
 class MyMapDataset(Dataset):
-    def __init__(self, data) -> None:
+    def __init__(self) -> None:
         super(MyMapDataset).__init__()
-        self.data = data
+        self.inputs = []
+        self.truths = []
 
-    def __getitem__(self, index: Any) -> Any:
-        return self.data[index]
+    def __getitem__(self, index: int) -> Tuple[torch.Tensor, torch.Tensor]:
+        return self.inputs[index], self.truths[index]
 
     def __len__(self) -> int:
-        raise len(self.data)
+        raise len(self.inputs)
 
 
 class MyIterableDataset(IterableDataset):
